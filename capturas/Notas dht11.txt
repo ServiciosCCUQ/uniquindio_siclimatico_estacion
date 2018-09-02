@@ -1,0 +1,2 @@
+Libreria : 	dht11
+		adafruit unified sensor
