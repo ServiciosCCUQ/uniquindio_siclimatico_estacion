@@ -292,7 +292,7 @@ void serialEvent() {
     {
       //Ejecutar Orden66 (Si el raspberry le envia 'F')
       dispararCamara();
-      Serial.println("Disparar Camara");
+      //Serial.println("Disparar Camara");
     }
   }
 }
