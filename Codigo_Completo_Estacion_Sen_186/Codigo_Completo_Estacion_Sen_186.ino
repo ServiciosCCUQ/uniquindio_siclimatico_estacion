@@ -65,8 +65,8 @@ DynamicJsonDocument doc(512);
 const int ledPIN = 12;
 
 // Informacion para la camara
-const int PIR1 = 2;  // pin 2 va a la señal del sensor de movimiento
-const int PIR2 = 4;  // pin 3 va a la señal del sensor de movimiento
+//const int PIR1 = 2;  // pin 2 va a la señal del sensor de movimiento
+//const int PIR2 = 4;  // pin 3 va a la señal del sensor de movimiento
 const int INFRAROJO = 3;
 int pir_lectura1 = 0;
 int pir_lectura2 = 0;
@@ -200,8 +200,8 @@ void setup()
 }
 
 void setupInfrarojo(){
-  pinMode(PIR1, INPUT);  // Configurar pir como entrada o INPUT
-  pinMode(PIR2, INPUT);  // Configurar pir como entrada o INPUT  
+//  pinMode(PIR1, INPUT);  // Configurar pir como entrada o INPUT
+//  pinMode(PIR2, INPUT);  // Configurar pir como entrada o INPUT  
   pinMode(INFRAROJO, OUTPUT);
   TCCR2A = _BV(COM2B1) | _BV(WGM21) | _BV(WGM20);
   TCCR2B = _BV(WGM22) | _BV(CS21); 
@@ -293,12 +293,13 @@ void manejoFaro(){
 void detectarMovimiento(){
   DateTime now = rtc.now();
   // Tomar fotos solo de dia
-  if (now.hour() >= 6 and now.hour() <= 18){
-    pir_lectura1 = digitalRead(PIR1); //leer el pin del sensor de movimiento PIR
-    pir_lectura2 = digitalRead(PIR2); //leer el pin del sensor de movimiento PIR
+  if (now.hour() >= 6 and now.hour() <= 18){ //18
+    /*pir_lectura1 = digitalRead(PIR1); //leer el pin del sensor de movimiento PIR
+    //pir_lectura2 = digitalRead(PIR2); //leer el pin del sensor de movimiento PIR
     if (pir_lectura1 == HIGH || pir_lectura2 == HIGH) {
       dispararCamara();    
-    }   
+    }  
+    */ 
   }  
 
 }
