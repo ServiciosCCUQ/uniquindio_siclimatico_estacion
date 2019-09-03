@@ -241,7 +241,7 @@ void data_dth11(){
 void loop()
 {
 
- detectarMovimiento();
+ detectarLibacion();
   
  // Obtener fecha Actual
  DateTime now = rtc.now();
@@ -290,18 +290,13 @@ void manejoFaro(){
 }
 
 
-void detectarMovimiento(){
-  DateTime now = rtc.now();
-  // Tomar fotos solo de dia
-  if (now.hour() >= 6 and now.hour() <= 18){ //18
-    /*pir_lectura1 = digitalRead(PIR1); //leer el pin del sensor de movimiento PIR
-    //pir_lectura2 = digitalRead(PIR2); //leer el pin del sensor de movimiento PIR
-    if (pir_lectura1 == HIGH || pir_lectura2 == HIGH) {
-      dispararCamara();    
-    }  
-    */ 
-  }  
-
+void detectarLibacion(){
+  if (Serial.available() > 0){
+    if ( Serial.readString() == "F"){
+      //Ejecutar Orden66
+       dispararCamara();
+    }
+  }
 }
 
 void dispararCamara(){
