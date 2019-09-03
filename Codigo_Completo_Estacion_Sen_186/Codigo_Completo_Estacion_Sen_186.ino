@@ -240,9 +240,6 @@ void data_dth11() {
 
 void loop()
 {
-
-  detectarLibacion();
-
   // Obtener fecha Actual
   DateTime now = rtc.now();
 
@@ -289,11 +286,14 @@ void manejoFaro() {
   digitalWrite(ledPIN , LOW);
 }
 
-
-void detectarLibacion() {
-  if (Serial.available() > 0 && Serial.read() == 70) {
-    //Ejecutar Orden66 (Si el raspberry le envia 'F')
-    dispararCamara();
+void serialEvent() {
+  while (Serial.available()) {
+    if (Serial.read() == 70)
+    {
+      //Ejecutar Orden66 (Si el raspberry le envia 'F')
+      dispararCamara();
+      Serial.println("Disparar Camara");
+    }
   }
 }
 
